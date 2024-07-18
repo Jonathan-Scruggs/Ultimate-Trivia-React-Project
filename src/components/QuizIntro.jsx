@@ -3,6 +3,7 @@ import yellowBlob from "../assets/blob 5.png"
 import blueBlob from "../assets/blobs.png"
 
 export default function QuizIntro(){
+    // TODO: Implement form functionality
     return (
         <main className="quiz-intro">
             <img className="yellow-blob"src={yellowBlob}/>
@@ -57,8 +58,8 @@ export default function QuizIntro(){
                     </select>
                 </div>
                 <div className="option-container">
-                    <label className="quiz-intro-label" htmlFor="number-of-questions">Number of Questions:</label>
-                    <input id="number-of-questions"type="number" min="1" max="50"  className="quiz-intro-option"/>
+                    <label className="quiz-intro-label number" htmlFor="number-of-questions">Number of Questions:</label>
+                    <input id="number-of-questions"type="number" min="1" max="50" className="quiz-intro-option"/>
                 </div>
                 <button className="quiz-intro-start-btn">Start quiz</button>
             </form>
