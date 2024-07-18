@@ -1,6 +1,4 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import QuizIntro from './components/QuizIntro'
 /* ****HINTS******
   - questions property of API response is html entity. Use a library such as he or html-entities to decode and the HTML entities.
   
@@ -13,7 +11,7 @@ import './App.css'
 */
 function App() {
   return (
-    
+    <QuizIntro/>
   )
 }
 
