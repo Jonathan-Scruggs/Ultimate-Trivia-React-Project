@@ -17,7 +17,7 @@ export default function QuizIntro(props){
     })
     const [formSubmitted,setFormSubmitted] = React.useState(false)
 
-    
+    const firstRender = React.useRef(true)
 
     function handleChange(event){
         setFormData(prevFormData => {
@@ -33,11 +33,21 @@ export default function QuizIntro(props){
         setFormSubmitted(true)
     }
     React.useEffect(() => {
-        console.log(formData)
-        // Don't need clean up function since we aren't doing any side effects that apply to the component
+        // Used to prevent initial fetch call to api on first render.
+        if (firstRender.current){
+            firstRender.current = false
+            return;
+        }
         fetch(`https://opentdb.com/api.php?amount=${formData.numQuestions}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.questionType}`)
         .then((response) => response.json())
-        .then(data => console.log(data))
+        .then(data => {props.setPage(prevState =>{
+            return {
+                ...prevState,
+                quizIntro: false,
+                quizElapsed: true,
+                questions: data.results
+            }
+        })})
     },[formSubmitted])
 
 

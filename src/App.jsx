@@ -1,4 +1,5 @@
 import QuizIntro from './components/QuizIntro'
+import Quiz from './components/Quiz'
 import React from "react"
 /* ****HINTS******
   - questions property of API response is html entity. Use a library such as he or html-entities to decode and the HTML entities.
@@ -17,10 +18,13 @@ function App() {
     quizIntro: true,
     quizElapsed: false,
     quizEnd: false,
-    questions: {}
+    questions: []
   })
   return (
-    <QuizIntro setPage={setPage}/>
+    <>
+      {page.quizIntro && <QuizIntro setPage={setPage}/>}
+      {page.quizElapsed && <Quiz questions={page.questions}/>}
+    </>
   )
 }
 

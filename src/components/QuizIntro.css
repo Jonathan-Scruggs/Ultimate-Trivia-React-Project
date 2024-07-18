@@ -1,10 +1,7 @@
 * {
     box-sizing: border-box;
 }
-#root {
-    position: relative;
-    background-color: #F5F7FB;
-}
+
 .quiz-intro{
     display: flex;
     flex-direction: column;
