@@ -4,3 +4,5 @@
 - OTDB API(https://opentdb.com/api_config.php)
 - Tally correct answers and uses color coding to distinguish between correct and incorrect answers.
 - Difficultly,category, question type and number of questions.
+## What I learnt:
+- React set state is ASYNC

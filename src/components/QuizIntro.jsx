@@ -1,18 +1,55 @@
 import "./QuizIntro.css"
 import yellowBlob from "../assets/blob 5.png"
 import blueBlob from "../assets/blobs.png"
+import React from "react"
+import PropTypes from 'prop-types';
+QuizIntro.propTypes = {
+    setPage: PropTypes.func
+}
 
-export default function QuizIntro(){
-    // TODO: Implement form functionality
+export default function QuizIntro(props){
+    // TODO: Implement form functionality 
+    const [formData,setFormData] = React.useState({
+        category: "",
+        difficulty: "",
+        questionType: "",
+        numQuestions: 10
+    })
+    const [formSubmitted,setFormSubmitted] = React.useState(false)
+
+    
+
+    function handleChange(event){
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+            }
+    })
+    }
+
+    function handleFormSubmit(event){
+        event.preventDefault() // Prevents default and then we submit our request to the API
+        setFormSubmitted(true)
+    }
+    React.useEffect(() => {
+        console.log(formData)
+        // Don't need clean up function since we aren't doing any side effects that apply to the component
+        fetch(`https://opentdb.com/api.php?amount=${formData.numQuestions}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.questionType}`)
+        .then((response) => response.json())
+        .then(data => console.log(data))
+    },[formSubmitted])
+
+
     return (
         <main className="quiz-intro">
             <img className="yellow-blob"src={yellowBlob}/>
             <h1 className="quizzical-header">Quizzical</h1>
             <p className="quizzical-description">Welcome to Quizzical, the ultimate trivia challenge! </p>
-            <form className="quiz-intro-form">
+            <form onSubmit={handleFormSubmit} className="quiz-intro-form">
                 <div className="option-container">
                     <label className="quiz-intro-label" htmlFor="category">Category:</label>
-                    <select name="category" id="category"  className="quiz-intro-option">
+                    <select value={formData.category}onChange={handleChange} name="category" id="category"  className="quiz-intro-option">
                         <option value="">Any Category</option>
                         <option value="9">General Knowledge</option>
                         <option value="10">Entertainment: Books</option>
@@ -42,7 +79,7 @@ export default function QuizIntro(){
                 </div>
                 <div className="option-container">
                     <label className="quiz-intro-label" htmlFor="difficulty">Difficulty:</label>
-                    <select id="difficulty" name="difficulty" className="quiz-intro-option">
+                    <select value={formData.difficulty} onChange={handleChange} id="difficulty" name="difficulty" className="quiz-intro-option">
                         <option value="">Any Difficulty</option>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
@@ -51,7 +88,7 @@ export default function QuizIntro(){
                 </div>
                 <div className="option-container">
                     <label className="quiz-intro-label" htmlFor="question-type">Question Type:</label>
-                    <select id="question-type" name="question-type"  className="quiz-intro-option">
+                    <select value={formData.questionType} onChange={handleChange} id="question-type" name="questionType"  className="quiz-intro-option">
                         <option value="">Any Type</option>
                         <option value="multiple">Multiple Choice</option>
                         <option value="boolean">True/False</option>
@@ -59,12 +96,11 @@ export default function QuizIntro(){
                 </div>
                 <div className="option-container">
                     <label className="quiz-intro-label number" htmlFor="number-of-questions">Number of Questions:</label>
-                    <input id="number-of-questions"type="number" min="1" max="50" className="quiz-intro-option"/>
+                    <input value={formData.numQuestions} name="numQuestions" onChange={handleChange} id="number-of-questions"type="number" min="1" max="50" className="quiz-intro-option"/>
                 </div>
                 <button className="quiz-intro-start-btn">Start quiz</button>
             </form>
             <img src={blueBlob} className="blue-blob"/>
-
         </main>
 
     )
