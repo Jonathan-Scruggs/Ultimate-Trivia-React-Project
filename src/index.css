@@ -28,3 +28,8 @@ body {
     position: absolute;
     width: 20%;
 }
+@media (min-width: 480px )  {
+    .yellow-blob,.blue-blob{
+        width: 15%;
+    }
+}
