@@ -1,0 +1,28 @@
+
+.answer-btns-container{
+    display: flex;
+    column-gap:0.8em;
+    border-bottom: 0.79px solid #DBDEF0;
+    padding-bottom: 1em;
+}
+
+.question{
+  font-family: Karla;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+  text-align: left;
+}
+.question,.answer-btn{
+    color: #293264;
+}
+.answer-btn{
+    border: 1px solid #4D5B9E ;
+    border-radius: 8px;
+    font-family: Inter;
+    font-size: 0.64rem;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    background: none;
+    text-align: center;
+}
