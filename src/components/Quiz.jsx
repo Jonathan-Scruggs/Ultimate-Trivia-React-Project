@@ -3,16 +3,14 @@ import blueBlob from "../assets/blobs.png"
 import PropTypes from 'prop-types'
 import Question from "./Question.jsx";
 import React  from "react";
-// TODO: Make construct Question function that is used as a callback function in the map method
-    // TODO: Render content to screen
+import "./Quiz.css"
 Quiz.propTypes = {
     questions: PropTypes.array
 }
-/* ***REFACTOR***
-In Quiz Component have a state that is an array of quiz objects.
-This will contain relevant information for each question */
 
 export default function Quiz(props){
+
+    const [gameOver,setGameState] = React.useState(false)
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -48,6 +46,10 @@ export default function Quiz(props){
             // Have to make a copy then modify
         })
     }
+    function gradeQuiz(){
+
+        
+    }
     
     const [questions,setQuestions] = React.useState(initializeQuestionsState())
     const questionsJSX = questions.map((question,index) => {
@@ -61,7 +63,7 @@ export default function Quiz(props){
             <img className="yellow-blob"src={yellowBlob}/>
             {questionsJSX}
              <img src={blueBlob} className="blue-blob"/>
-             <button className="check-answers-btn">Check answers</button>
+             {gameOver === false && (<button onClick={gradeQuiz} className="check-answers-btn">Check answers</button>)}
         </main>
 
     )
