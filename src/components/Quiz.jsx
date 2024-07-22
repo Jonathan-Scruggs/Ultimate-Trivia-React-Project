@@ -40,10 +40,10 @@ export default function Quiz(props){
         return questions   
     }
     
-    function setQuestionAnswer(id,answerId){
+    function setQuestionAnswer(id,answer){
         setQuestions(prevQuestions => {
             const newArray = [...prevQuestions]
-            newArray[id].selectedAnswer = answerId
+            newArray[id].selectedAnswer = answer
             return newArray
             // Have to make a copy then modify
         })
@@ -61,7 +61,7 @@ export default function Quiz(props){
             <img className="yellow-blob"src={yellowBlob}/>
             {questionsJSX}
              <img src={blueBlob} className="blue-blob"/>
-             <button>Check answers</button>
+             <button className="check-answers-btn">Check answers</button>
         </main>
 
     )

@@ -15,12 +15,13 @@ export default function Question(props){
         answers = ["True","False"]
     }
      
-    console.log(props)
     let buttonsJSX = answers.map((answer,index) => {    
+        console.log(answer,selectedAnswer)
+        // Problem not rerendering 
         const styles = {
-            backgroundColor: selectedAnswer === index ? " #D6DBF5":"none"
+            backgroundColor: selectedAnswer === answer ? "#D6DBF5":"unset"
         }
-        return (<button onClick={() => props.changeAnswer(id,index)}
+        return (<button onClick={() => props.changeAnswer(id,answer)}
         key={index} 
         style={styles}
         className="answer-btn">{answer}</button>)
