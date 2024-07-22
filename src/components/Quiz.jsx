@@ -11,7 +11,8 @@ Quiz.propTypes = {
 export default function Quiz(props){
 
     const [gameOver,setGameState] = React.useState(false)
-
+    const [questions,setQuestions] = React.useState(initializeQuestionsState())
+    const [quizScore,setScore] = React.useState(0)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -47,11 +48,17 @@ export default function Quiz(props){
         })
     }
     function gradeQuiz(){
+        let numCorrect = 0;
+        for (let question of questions){
+            if (question.correctAnswer === question.selectedAnswer){
+                numCorrect++
+            }            
+        }
+        setScore(numCorrect)
+        setGameState(true)
 
-        
     }
     
-    const [questions,setQuestions] = React.useState(initializeQuestionsState())
     const questionsJSX = questions.map((question,index) => {
         return <Question key={index} 
         changeAnswer={setQuestionAnswer}
@@ -63,7 +70,11 @@ export default function Quiz(props){
             <img className="yellow-blob"src={yellowBlob}/>
             {questionsJSX}
              <img src={blueBlob} className="blue-blob"/>
-             {gameOver === false && (<button onClick={gradeQuiz} className="check-answers-btn">Check answers</button>)}
+             {gameOver === false && (<button onClick={gradeQuiz} className="quiz-btn">Check answers</button>)}
+             {gameOver && <div className="quiz-results">
+                <p>You scored {quizScore}/{questions.length} answers</p>
+                <button className="quiz-btn">Play again</button>
+             </div>}
         </main>
 
     )

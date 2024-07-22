@@ -14,17 +14,15 @@ export default function Question(props){
         // No need to shuffle true and false
         answers = ["True","False"]
     }
-     
     let buttonsJSX = answers.map((answer,index) => {    
-        console.log(answer,selectedAnswer)
-        // Problem not rerendering 
+        let answerText = decode(answer)
         const styles = {
             backgroundColor: selectedAnswer === answer ? "#D6DBF5":"unset"
         }
         return (<button onClick={() => props.changeAnswer(id,answer)}
         key={index} 
         style={styles}
-        className="answer-btn">{answer}</button>)
+        className="answer-btn">{answerText}</button>)
     })
     
     
