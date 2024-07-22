@@ -2,30 +2,28 @@ import PropTypes from "prop-types"
 import {decode} from 'html-entities';
 import "./Question.css"
 Question.propTypes = {
-    question: PropTypes.string,
-    incorrectAnswers: PropTypes.array,
-    correctAnswer: PropTypes.string,
-    questionType: PropTypes.string
-}
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+    questionObject: PropTypes.object,
+    changeAnswer: PropTypes.func,
 }
 
 export default function Question(props){
-    const questionText = decode(props.question)
-    let answersArray = [...props.incorrectAnswers,props.correctAnswer]
-    if (props.questionType === 'boolean'){
+    let {id,selectedAnswer,question,answers,correctAnswer,questionType} = props.questionObject
+
+    const questionText = decode(question)
+    if (questionType === 'boolean'){
         // No need to shuffle true and false
-        answersArray = ["True","False"]
+        answers = ["True","False"]
     }
-    else {
-        shuffleArray(answersArray)
-    }
-    let buttonsJSX = answersArray.map((answer) => {        
-        return (<button key={answersArray.indexOf(answer)} className="answer-btn">{answer}</button>)
+     
+    console.log(props)
+    let buttonsJSX = answers.map((answer,index) => {    
+        const styles = {
+            backgroundColor: selectedAnswer === index ? " #D6DBF5":"none"
+        }
+        return (<button onClick={() => props.changeAnswer(id,index)}
+        key={index} 
+        style={styles}
+        className="answer-btn">{answer}</button>)
     })
     
     

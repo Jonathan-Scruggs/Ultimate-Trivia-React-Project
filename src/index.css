@@ -13,7 +13,7 @@ body {
 }
 main {
     position: relative;
-    padding: 2em 1em 5em;
+    padding: 2.5em 1em 5em;
     min-height: 100vh;
 }
 
@@ -21,6 +21,7 @@ main {
     font-size: 1rem;
 }
 .yellow-blob{
+    top: 0%;
     right: 0%;
 }
 .blue-blob{
