@@ -54,8 +54,8 @@ export default function QuizIntro(props){
     return (
         <main className="quiz-intro">
             <img className="yellow-blob"src={yellowBlob}/>
-            <h1 className="quizzical-header">Quizzical</h1>
-            <p className="quizzical-description">Welcome to Quizzical, the ultimate trivia challenge! </p>
+            <h1 className="quizzical-header">Ultimate Trivia</h1>
+            <p className="quizzical-description">Welcome to Ultimate Trivia, the ultimate trivia challenge! </p>
             <form onSubmit={handleFormSubmit} className="quiz-intro-form">
                 <div className="option-container">
                     <label className="quiz-intro-label" htmlFor="category">Category:</label>
