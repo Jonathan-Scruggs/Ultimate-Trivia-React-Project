@@ -16,4 +16,17 @@
     font-family: Inter;
     font-weight: 700;
     color:#293264;
+    max-width: 80%;
+}
+.check-btn{
+    margin: 1rem auto;
+    display: block;
+}
+@media (min-width: 768px ){
+    .quiz-results{
+        font-size: 2rem;
+    }
+    .quiz-btn{
+        font-size: 1.5rem;
+    }
 }

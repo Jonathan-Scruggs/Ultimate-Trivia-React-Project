@@ -9,7 +9,6 @@ Question.propTypes = {
 
 export default function Question(props){
     let {id,selectedAnswer,question,answers,correctAnswer,questionType} = props.questionObject
-    console.log(props.gameOver)
     const questionText = decode(question)
     if (questionType === 'boolean'){
         // No need to shuffle true and false
@@ -21,11 +20,13 @@ export default function Question(props){
         let styles = {}
         if (props.gameOver){
             if (answer === selectedAnswer && selectedAnswer === correctAnswer){
-                console.log("Inside of correct")
                 styles = {background: "#94D7A2", border:"unset"}
             }
             else if (answer === selectedAnswer && selectedAnswer != correctAnswer){
                 styles ={background: "#F8BCBC", border:"unset"}
+            }
+            else {
+                styles = {opacity: "50%"}
             }
         }
         else {

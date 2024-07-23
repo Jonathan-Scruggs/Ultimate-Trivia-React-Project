@@ -5,7 +5,8 @@ import Question from "./Question.jsx";
 import React  from "react";
 import "./Quiz.css"
 Quiz.propTypes = {
-    questions: PropTypes.array
+    questions: PropTypes.array,
+    setPage: PropTypes.func
 }
 
 export default function Quiz(props){
@@ -20,6 +21,23 @@ export default function Quiz(props){
         }
         return array
     }
+    /*Play Again Functionality 
+    Sets the state in the App component to QuizIntro and 
+    set quizElasped to false. Reset the react states
+    */
+    function playAgain(){
+        props.setPage(prevState => {
+            return {
+                ...prevState,
+                quizIntro: true,
+                quizElapsed: false
+            }
+        })
+        // Don't need to reset the states since when we unmount the component the states are reset 
+        // and will reinitialize when the game starts again
+    }
+
+
 
     function initializeQuestionsState(){
         let questions = []
@@ -73,10 +91,10 @@ export default function Quiz(props){
             <img className="yellow-blob"src={yellowBlob}/>
             {questionsJSX}
             <img src={blueBlob} className="blue-blob"/>
-             {gameOver === false && (<button onClick={gradeQuiz} className="quiz-btn">Check answers</button>)}
+             {gameOver === false && (<button onClick={gradeQuiz} className="quiz-btn check-btn">Check answers</button>)}
              {gameOver && <div className="quiz-results">
                 <p>You scored {quizScore}/{questions.length} answers</p>
-                <button className="quiz-btn">Play again</button>
+                <button className="quiz-btn" onClick={playAgain}>Play again</button>
              </div>}
         </main>
 

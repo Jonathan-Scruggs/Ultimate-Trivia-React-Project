@@ -7,10 +7,11 @@
 }
 
 .question{
+  max-width:90%;
   font-family: Karla;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   text-align: left;
 }
 .question,.answer-btn{
@@ -18,10 +19,19 @@
 }
 .answer-btn{
     border: 1px solid #4D5B9E ;
-    border-radius: 8px;
+    border-radius: 20px;
     font-family: Inter;
     font-size: 0.64rem;
     font-weight: 500;
     padding: 0.5em 1em;
     text-align: center;
+
+}
+@media (min-width:768px) {
+    .question{
+        font-size: 1.5rem;
+    }
+    .answer-btn{
+        font-size: 1rem;
+    }
 }

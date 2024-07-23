@@ -12,9 +12,9 @@ body {
     background-color: #F5F7FB;
 }
 main {
-    
-    padding: 3em 1em 4em;
-    min-height: 100vh;
+    height: 90%;
+    padding: 3em 1em 3em;
+   
 }
 
 .option-container{
@@ -25,7 +25,7 @@ main {
     right: 0%;
 }
 .blue-blob{
-    
+    bottom: 0%;
     left: 0%;
 }
 .blue-blob,.yellow-blob{
@@ -35,7 +35,10 @@ main {
 
 
 @media (min-width: 480px )  {
-    .yellow-blob,.blue-blob{
+    .yellow-blob{
         width: 15%;
+    }
+    .blue-blob{
+        width: 10%;
     }
 }
