@@ -1,5 +1,5 @@
 ## Live View
-- https://quizzical-react-project.vercel.app/
+- https://ultimate-trivia.vercel.app/
 
 ## Features
 - State to keep track of what screen should be displayed
