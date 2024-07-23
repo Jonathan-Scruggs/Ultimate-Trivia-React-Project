@@ -40,6 +40,10 @@ export default function Quiz(props){
     }
     
     function setQuestionAnswer(id,answer){
+        if (gameOver){
+            return
+        }
+
         setQuestions(prevQuestions => {
             const newArray = [...prevQuestions]
             newArray[id].selectedAnswer = answer
@@ -56,11 +60,10 @@ export default function Quiz(props){
         }
         setScore(numCorrect)
         setGameState(true)
-
     }
-    
+
     const questionsJSX = questions.map((question,index) => {
-        return <Question key={index} 
+        return <Question gameOver={gameOver} key={index} 
         changeAnswer={setQuestionAnswer}
         questionObject={questions[index]}
         />
@@ -69,7 +72,7 @@ export default function Quiz(props){
         <main>
             <img className="yellow-blob"src={yellowBlob}/>
             {questionsJSX}
-             <img src={blueBlob} className="blue-blob"/>
+            <img src={blueBlob} className="blue-blob"/>
              {gameOver === false && (<button onClick={gradeQuiz} className="quiz-btn">Check answers</button>)}
              {gameOver && <div className="quiz-results">
                 <p>You scored {quizScore}/{questions.length} answers</p>
