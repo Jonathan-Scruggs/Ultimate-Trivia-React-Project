@@ -33,8 +33,8 @@ export default function Question(props){
         }
         else {
             styles = {
-                backgroundColor: selectedAnswer === answer ? "#D6DBF5":"unset",
-                border: selectedAnswer === answer ? "unset":"1px solid #4D5B9E"
+                backgroundColor: selectedAnswer === answerText ? "#D6DBF5":"unset", 
+                border: selectedAnswer === answerText ? "unset":"1px solid #4D5B9E"
             }
         }
         return (<button onClick={() => props.changeAnswer(id,answerText)}

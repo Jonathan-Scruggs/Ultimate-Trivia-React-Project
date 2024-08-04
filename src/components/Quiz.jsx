@@ -61,7 +61,7 @@ export default function Quiz(props){
         if (gameOver){
             return
         }
-
+        console.log(id,answer)
         setQuestions(prevQuestions => {
             const newArray = [...prevQuestions]
             newArray[id].selectedAnswer = answer
