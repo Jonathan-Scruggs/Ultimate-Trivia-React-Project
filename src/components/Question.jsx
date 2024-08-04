@@ -19,10 +19,12 @@ export default function Question(props){
         let answerText = decode(answer)
         let styles = {}
         if (props.gameOver){
-            if (answer === selectedAnswer && selectedAnswer === correctAnswer){
+            if (answer === selectedAnswer && selectedAnswer === correctAnswer || answer === correctAnswer){
                 styles = {background: "#94D7A2", border:"unset"}
             }
             else if (answer === selectedAnswer && selectedAnswer != correctAnswer){
+                console.log("Incorrect Answer")
+
                 styles ={background: "#F8BCBC", border:"unset"}
             }
             else {
